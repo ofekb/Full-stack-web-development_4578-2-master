@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script>
+        function nonStrict() {
+            this.test1 = "OK";  //--> this refers to window
+        }
+        console.log(window.test1);  //--> undefined
+        nonStrict();
+        console.log(window.test1);  //--> OK
+
+
+        function strict() {
+            'use strict';
+            this.test2 = "OK";  //--> this refers to window
+        
+        /*
+        Uncaught TypeError: 
+        Cannot set property 'test2' of undefined at strict 
+        */
+        }
+        console.log(window.test2);  //--> undefined
+        strict();
+        console.log(window.test2);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script>
+
+        /*
+        timeToRepeat: 3
+        sec to timer1 : 2
+        sec to timer2 : 4
+        sec to timer3 : 1
+        */
+
+        let secToWait = [2, 4, 1];
+
+        function callPromise(prevPromise, sec, timerIndex) {
+            return prevPromise.then(() => new Promise((resolve, reject) => {
+                setTimeout(
+                    () => {
+                        console.log(`Timer number ${timerIndex}, waited ${sec} sec (${(new Date()).toLocaleTimeString()})`);
+                        resolve();
+                    }, sec * 1000)
+            }));
+        }
+
+        secToWait.reduce(callPromise,new Promise((x,y)=>{x()}))
+/*
+        RUNNING SIMULATION:
+        ------------------------------------------------------------------------------------------
+        
+        prevPromise       |       sec     |      timerIndex  |     return
+        __________________________________________________________________________________________
+         (new Promise((x,y)=>{x()}))                 |       2                |      0             |     new Promise((x,y)=>{x()})..then(() => new Promise((resolve, reject) => {
+                setTimeout(
+                    () => {
+                        console.log(`Timer number ${timerIndex}, waited ${sec} sec (${(new Date()).toLocaleTimeString()})`);
+                        resolve();
+                    }, sec * 1000)
+            }));
+        __________________________________________________________________________________________
+         He                 |       L                |      2             |     Hel
+        __________________________________________________________________________________________
+         Hel                |       L                |      3             |     helL
+        __________________________________________________________________________________________
+         helL               |       O                |      4             |     helLo
+        __________________________________________________________________________________________
+        */
+/*
+OUTPUT:
+___________________________________
+Timer number 1, waited 2 sec (9:15:58)
+Timer number 2, waited 4 sec (9:16:02)
+Timer number 3, waited 1 sec (9:16:03)
+*/
+
+    </script>
+</head>
+
+<body>
+</body>
+
+</html>

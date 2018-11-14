@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script>
+        function nonStrict() {
+            test1 = "OK";  //--> because we dont have var / let / const , this is added to window
+        }
+        console.log(window.test1);  //--> undefined
+        nonStrict();
+        console.log(window.test1);  //--> OK
+
+
+        function strict() {
+            'use strict';
+            test2 = "OK";  //--> because we dont have var / let / const , this will throw an error
+        
+        /*
+            Uncaught ReferenceError: 
+            test2 is not defined at strict
+        */
+        }
+        console.log(window.test2);  //--> undefined
+        strict();
+        console.log(window.test2);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

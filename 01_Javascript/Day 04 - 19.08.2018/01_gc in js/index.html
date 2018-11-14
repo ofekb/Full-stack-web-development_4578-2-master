@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script>
+        var arr = [];
+
+        function createBigArr() {
+            for (var i = 0; i < 10000; arr.push(i++)); 
+        }
+
+        function emptyBigArr() {
+            arr = [];   
+        }
+
+    </script>
+</head>
+
+<body>
+    <button onclick="createBigArr()">createBigArr</button>
+    <button onclick="emptyBigArr()">emptyBigArr</button>
+</body>
+
+</html>

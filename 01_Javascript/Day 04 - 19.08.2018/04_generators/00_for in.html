@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script>
+        let arr = ["A", "B", "C"];
+        let obj = {
+            key1: "A",
+            key2: "B",
+            key3: "C",
+        };
+
+        console.log("--------------for in - arr---------------");
+        for (let x in arr) {
+            console.log(x);
+        }
+
+        console.log("--------------for of - arr---------------");
+        for (let x of arr) {
+            console.log(x);
+        }
+
+        console.log("--------------for in - obj---------------");
+        for (let x in obj) {
+            console.log(x);
+        }
+
+        console.log("--------------for of - obj---------------");
+        for (let x of obj) {
+            console.log(x);
+        }
+        
+        
+        /*
+        OUTPUT:
+        _______________________________________________
+        
+            --------------for in - arr---------------
+            0
+            1
+            2
+            --------------for of - arr---------------
+            A
+            B
+            C
+            --------------for in - obj---------------
+            key1
+            key2
+            key3
+            --------------for of - obj---------------
+            Uncaught TypeError: obj is not iterable
+                    
+        */
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

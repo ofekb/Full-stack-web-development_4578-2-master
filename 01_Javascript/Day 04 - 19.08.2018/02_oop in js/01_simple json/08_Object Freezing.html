@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <script>
+
+        let collage = {
+            name: 'JB',
+            address: 'Tel Aviv',
+            students: ["A", "B", "c"]
+        }
+
+        /*Freezing----------------
+        makes all properties nonwritable and seals obj. 
+        adding a property fails silently in non-strict mode,
+        and throws an error in strict mode
+        */
+
+        Object.freeze(collage); 
+        console.log(collage);  //--> {name: "JB", address: "Tel Aviv", students: ["A", "B", "c"]}
+        collage.name = 'Test';  // no effect, collage.name is read-only
+        console.log(collage);  //--> {name: "JB", address: "Tel Aviv", students: ["A", "B", "c"]}
+
+        collage.fullAddress = 'homa umigdal tel aviv';  // no effect, collage is not extensible
+        console.log(collage);  //--> {name: "JB", address: "Tel Aviv", students: ["A", "B", "c"]}
+
+        try {
+            (function () {
+                'use strict';
+                collage.name = 'Test';
+            }());
+        }
+        catch (e) {
+            console.log(e);  //--> TypeError: Cannot assign to read only property 'name' of object '#<Object>'
+        }
+
+
+        try {
+            (function () {
+                'use strict';
+                collage.fullAddress = 'homa umigdal tel aviv';
+            }());
+        }
+        catch (e) {
+            console.log(e);  //--> TypeError: Cannot add property fullAddress, object is not extensible
+        }
+
+        //Protecting an object affects the own properties, but not the values of those properties
+        collage.students = ["W", "Z"]; // no effect
+        console.log(collage);  //--> {name: "JB", address: "Tel Aviv", students: ["A", "B", "c"]}
+
+        collage.students.push("D"); // changes  collage.students
+        console.log(collage); //--> {name: "JB", address: "Tel Aviv", students: ["A", "B", "c" , "D"]}
+
+        //check whether an object is frozen 
+        console.log("Object.isFrozen(collage)", Object.isFrozen(collage));  //--> Object.isFrozen(collage) true
+
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

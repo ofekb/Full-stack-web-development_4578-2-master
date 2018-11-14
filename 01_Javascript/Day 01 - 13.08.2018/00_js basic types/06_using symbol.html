@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script>
+        var student1 = {
+            grade: 97
+        };
+        console.log(student1);  //--> {grade: 97}
+
+        student1.name = "Bob";
+        student1.grade = 90;
+        console.log(student1);  //--> {grade: 90, name: "Bob"}
+
+
+        var key = Symbol("grade");
+        
+        var student2 = {
+            [key]: 97
+        };
+        console.log(student2);  //--> {Symbol(grade): 97}
+
+        student2.name = "Bob";
+        student2[Symbol("grade")] = 90;
+        student2[key]=80;
+        console.log(student2);  //--> {name: "Bob", Symbol(grade): 97, Symbol(grade): 90} 
+        console.log(student2[key]); //--> 97
+        console.log(student2[Symbol("grade")]); //--> undefined
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

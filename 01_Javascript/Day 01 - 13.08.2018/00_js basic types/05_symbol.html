@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script>
+        //Every symbol value returned from Symbol() is unique. 
+        let s1 = Symbol();
+        let s2 = Symbol();
+        let s3=s1;
+        console.log(s1,s2,s3);   //--> Symbol() Symbol() Symbol()
+        console.log(`s1==s2: ${s1 == s2}`);  //--> s1==s2: false
+        console.log(`s1==s3: ${s1 == s3}`);  //--> s1==s2: true
+
+
+        let s4=Symbol("Bob");
+        let s5=Symbol("Bob");
+        let s6=s4;
+        console.log(s4,s5,s6);   //--> Symbol(Bob) Symbol(Bob) Symbol(Bob)
+        console.log(`s4==s5: ${s4 == s5}`);  //--> s4==s5: false
+        console.log(`s4==s6: ${s4 == s6}`);  //--> s4==s6: true
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

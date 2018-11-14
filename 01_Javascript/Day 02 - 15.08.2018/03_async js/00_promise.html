@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script>
+
+        function func1() {
+
+            /*
+            STEP 1: 
+            (x, y) => { x("end of loop func1"); } is executed in call-stack
+            */
+            /*
+            STEP 2: 
+            x is resolve function (passed by "then"), and is passed to the web api
+            */
+            let p = new Promise((x, y) => { x("end of loop func1"); });
+
+
+            /*
+            STEP 4: 
+            resolve function is taken from the task queue to the call stack
+            */
+            p.then(msg => {
+                for (let i = 0; i < 10 ** 10; i++);  // will take a few sec
+                console.log(msg, (new Date()).toLocaleTimeString())
+            });
+
+            /*
+            STEP 3: 
+            console.log - is executed in call-stack
+            */
+            console.log("after p in func1", (new Date()).toLocaleTimeString());
+        }
+
+
+        function func2() {
+            /*
+            STEP 1: 
+            (x, y) => { for (let i = 0; i < 10 ** 10; i++); x("end of loop func1"); } is executed in call-stack
+            */
+            /*
+            STEP 2: 
+            x is resolve function (passed by "then"), and is passed to the web api
+            */
+            let p = new Promise((x, y) => {
+                for (let i = 0; i < 10 ** 10; i++);  // will take a few sec
+                x("end of loop func2");
+            });
+
+
+            /*
+            STEP 4: 
+            resolve function is taken from the task queue to the call stack
+            */
+            p.then(msg => { console.log(msg, (new Date()).toLocaleTimeString()) });
+
+            /*
+            STEP 3: 
+            console.log - is executed in call-stack
+            */
+            console.log("after p in func2", (new Date()).toLocaleTimeString());
+        }
+
+
+
+/*
+OUTPUT:
+___________________
+after p in func1 12:59:38
+end of loop func1 12:59:51
+after p in func2 13:00:05
+end of loop func2 13:00:05
+*/
+    </script>
+</head>
+
+<body>
+    <input>
+    <button onclick="func1()">click me 1</button>
+    <button onclick="func2()">click me 2</button>
+</body>
+
+</html>

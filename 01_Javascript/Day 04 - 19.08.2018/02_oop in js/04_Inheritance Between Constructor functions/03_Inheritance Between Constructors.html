@@ -1,0 +1,97 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <script>
+        function GenericService(title) {
+            this.title = title;
+        }
+        GenericService.prototype.genericDescribe = function () {
+            return 'genericDescribe ' + this.title;
+        };
+
+
+        function Person(name) {
+            this.name = name;
+        }
+        Person.prototype.describe = function () {
+            return 'Person called ' + this.name;
+        };
+
+
+        //Sub should have all of the properties of Super (both prototype properties and instance properties) in addition to its own. 
+
+
+        /*---------------Inheriting Instance Properties-----------------
+        Instance properties are set up in the constructor itself, 
+        so inheriting the superconstructor’s instance properties involves calling that constructor
+        */
+        function Employee(name, title) {
+            //Do not to invoke Super via new, because that would create a new super instance.
+            Person.call(this, name);
+            GenericService.call(this, title);
+        }
+
+
+        let emp0 = new Employee("Open Uni", "Uni services");
+        emp0.__proto__ = GenericService.prototype;
+        console.log("emp0", emp0);
+        try {
+            console.log("emp0.genericDescribe()", emp0.genericDescribe());
+            console.log("emp0.describe()", emp0.describe());
+        }
+        catch (e) {
+            console.log(e);
+
+        }
+
+        let emp1 = new Employee("Jhon bryce", "Collage services");
+        emp1.__proto__ = Person.prototype;
+
+        console.log("emp1", emp1);
+        try {
+            console.log("emp1.describe()", emp1.describe());
+            console.log("emp1.genericDescribe()", emp1.genericDescribe());
+        }
+        catch (e) {
+            console.log(e);
+
+        }
+
+
+
+
+        let genericTest = new GenericService();
+
+        let emp2 = new Employee("TA Uni", "TA Uni services");
+        emp2.__proto__ = genericTest;
+        console.log("emp2", emp2);
+        try {
+            console.log("emp2.genericDescribe()", emp2.genericDescribe());
+            console.log("emp2.describe()", emp2.describe());
+        }
+        catch (e) {
+            console.log(e);
+
+        }
+
+
+        let simpleObj1 = Object.create(Object.prototype);
+        console.log("simpleObj1", simpleObj1);
+        console.log("simpleObj1", simpleObj1.toString());
+        let testObj = {};
+        let simpleObj2 = Object.create(testObj);
+        console.log("simpleObj2", simpleObj2);
+        console.log("simpleObj2", simpleObj2.toString());
+        let simpleObj3 = Object.create(null);
+        console.log("simpleObj3", simpleObj3);
+        console.log("simpleObj3", simpleObj3.toString());
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

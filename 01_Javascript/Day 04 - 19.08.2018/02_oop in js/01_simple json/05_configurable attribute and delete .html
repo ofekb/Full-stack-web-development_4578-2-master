@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html>
+
+<html>
+
+<head>
+    <script>
+        let collage = {
+            name: 'JB',
+            address: 'Tel Aviv'
+        };
+
+        Object.defineProperty(collage, 'key1', {
+            value: 456,
+            configurable: false,
+            enumerable: true
+        });
+
+        /*--------------Deleting properties--------------------
+        delete returns false if the property is an own property, 
+        but cannot be deleted.
+        And true in all other cases (even if it doesn’t change anything )
+        */
+
+        let firstDelete = delete (collage.address);
+        console.log(`delete(address) returned ${firstDelete} \ncollage:${JSON.stringify(collage)}`);
+
+
+        let secondDelete = delete (collage.key1);
+        console.log(`delete(key1) returned ${secondDelete} \ncollage:${JSON.stringify(collage)}`);
+
+
+        //delete affects only the own properties(non inherited)
+        //toString is inherited from Object 
+        let thirdDelete = delete (collage.toString);
+        console.log(`delete(toString) returned ${thirdDelete} \ncollage:${JSON.stringify(collage)}`);
+
+
+
+        /*
+        delete(address) returned true 
+        collage:{"name":"JB","key1":456}
+        delete(key1) returned false 
+        collage:{"name":"JB","key1":456}
+        delete(toString) returned true 
+        collage:{"name":"JB","key1":456}
+        */
+
+
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

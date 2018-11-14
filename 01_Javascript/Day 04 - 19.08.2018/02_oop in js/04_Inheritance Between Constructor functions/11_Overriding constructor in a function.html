@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <script>
+        //By default, every function has a property prototype that is set up correctly
+        function Cat() {
+
+        }
+
+
+        //avoid replacing this object and only add properties to it
+        function Dog() {
+
+        }
+        Dog.prototype = {
+            sayHello: function () { comsole.log("hello, I am a dog"); },
+            sayGoodBey: function () { comsole.log("GoodBey, I am a dog"); }
+        };
+
+        // Prefer this option to add properties to the prototype
+        function Bird() {
+
+        }
+        Bird.prototype.sayHello = function () { comsole.log("hello, I am a Bird") };
+
+
+
+        //If you do replace it, you should manually assign the correct value to constructor
+        function Person() {
+
+        }
+        Person.prototype = {
+            constructor: Person,
+            sayHello: function () { comsole.log("hello, I am a Person"); }
+
+        };
+
+
+
+        console.log("Cat.prototype.constructor === Cat", Cat.prototype.constructor === Cat);  //true
+        console.log("Dog.prototype.constructor === Dog", Dog.prototype.constructor === Dog);  //false
+        console.log("Bird.prototype.constructor === Bird", Bird.prototype.constructor === Bird);  //true
+        console.log("Person.prototype.constructor === Person", Person.prototype.constructor === Person);  //true
+
+        console.log("Cat.prototype.constructor", Cat.prototype.constructor);  //ƒ Cat() { }
+        console.log("Dog.prototype.constructor", Dog.prototype.constructor);  //ƒ Object() { [native code] }
+        console.log("Bird.prototype.constructor", Bird.prototype.constructor);     //ƒ Bird() { }  
+        console.log("Person.prototype.constructor", Person.prototype.constructor);  //ƒ Person() { }
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script>
+
+        //---------------VAL TYPE----------------
+        let num1 = 2;
+        let num2 = num1; //num2 contains the value that num1 contains
+        console.log(`num1: ${num1}, num2: ${num2}`);  //--> num1: 2, num2: 2
+
+
+        num2=9;
+        console.log(`num1: ${num1}, num2: ${num2}`);  //--> num1: 2, num2: 9
+
+        //---------------REF TYPE----------------
+        let arr1 = [1,1,1,1];
+        let arr2 = arr1; //arr2 contains the ref to the array that arr1 points to
+        console.log(`arr1: ${arr1}, arr2: ${arr2}`);  //--> arr1: 1,1,1,1, arr2: 1,1,1,1
+
+
+        arr2[0]=9;
+        console.log(`arr1: ${arr1}, arr2: ${arr2}`);  //--> arr1: 9,1,1,1, arr2: 9,1,1,1
+
+
+        arr2=[4,4,4,4];
+        console.log(`arr1: ${arr1}, arr2: ${arr2}`);  //--> arr1: 9,1,1,1, arr2: 4,4,4,4
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

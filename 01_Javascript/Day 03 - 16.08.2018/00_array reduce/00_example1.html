@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script>
+        let arr = ["A", "B", "C"];
+
+        let res = arr.reduce(
+            (previousValue, currentValue, currentIndex) =>
+                `${previousValue} + (${currentValue}:${currentIndex})`
+        );
+
+
+        console.log(res);  //A + (B:1) + (C:2)
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

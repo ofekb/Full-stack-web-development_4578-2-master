@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <script>
+        /*Inheritance---------------------------------------
+        Prototype is based inheritance
+        An object specifies its prototype via the internal property  __proto__  
+        */
+
+        var Person = {
+            describe: function () {
+                console.log('Person named ' + this.name);
+            }
+        };
+
+        var student1 = {
+            __proto__: Person,
+            name: 'Alice',
+            sayGoodMorning: function () {
+                console.log(`student1: "GoodMorning!!"`);
+            }
+        };
+
+        var student2 = {
+            __proto__: Person,
+            name: 'Bob'
+        };
+
+        var student3 = { 
+            name: 'Clark',
+            sayGoodMorning: function () {
+                console.log(`student3: "GoodMorning!!"`);
+            }
+         };
+        student3.__proto__ = student1;
+
+        student1.describe();
+        student2.describe();
+        student3.describe();
+        student3.sayGoodMorning();
+        student3.__proto__.sayGoodMorning();
+
+
+        /*
+        OUTPUT:
+        _______________________
+        Person named Alice
+        Person named Bob
+        Person named Clark
+        student3: "GoodMorning!!"
+        student1: "GoodMorning!!"
+        */
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

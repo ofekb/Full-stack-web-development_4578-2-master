@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <script>
+    
+
+    /*
+    fetch -> 
+    returns promise -> 
+    resolve returns a full response with a ReadableStream body -> 
+    call the response json function -> 
+    returns promise -> 
+    resolve returns the response body as json
+    */
+        fetch("https://jsonplaceholder.typicode.com/todos/1")
+        .then(res=> res.json())
+        .then(body=> console.log(body))
+  
+
+        /*
+        OUTPUT:
+        __________________________
+        {
+                "userId": 1,
+                "id": 1,
+                "title": "delectus aut autem",
+                "completed": false
+            }
+        */
+    </script>
+</head>
+
+<body></body>
+
+</html>

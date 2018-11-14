@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script>
+
+        // execFunc gets as a parameter a function
+        function execFunc(f1) {
+            if (typeof (f1) != "function")
+                console.log("f1 is not a function, it is:"+f1);
+            else
+                f1(2);
+        }
+
+        function regularFunc(num) {
+            console.log("I am a regular function " + num);
+        }
+
+        execFunc((num) => { console.log("I am an arrow function " + num) });
+        execFunc(function (num) { console.log("I am an anon function " + num) });
+        execFunc(regularFunc);
+        execFunc("Hello");
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

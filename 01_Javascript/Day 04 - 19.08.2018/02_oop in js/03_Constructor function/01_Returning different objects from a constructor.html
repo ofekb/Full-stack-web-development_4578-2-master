@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <script>
+        function Cat() {
+            this.color = "black";
+        }
+
+        function Dog() {
+            this.name = "Jane";
+        }
+
+        function Bird() {
+            this.canFly = true;
+        }
+
+        //a constructor can return a direct instance or other object
+        //but if the constructor returns a primitive value, it will be ignored
+        //and a new object of the current function will be returned
+        function Animal(str) {
+
+            this.isAnimal = true;
+
+            switch (str) {
+                case "Animal": return new Animal();
+                case "Cat": return new Cat();
+                case "Dog": return new Dog();
+                case "Bird": return new Bird();
+                default: return "not found";   //string -->primitive 
+            }
+
+            //not added to animal object - because it is declared after return
+            this.numOfLegs = 4;
+        }
+
+        var obj1 = new Animal("Animal");
+        var obj2 = new Animal("Cat");
+        var obj3 = new Animal("Dog");
+        var obj4 = new Animal("Bird");
+        var obj5 = new Animal("Test");
+
+        console.log("obj1", obj1);  //Animal
+        console.log("obj2", obj2);  //Cat
+        console.log("obj3", obj3);  //Dog
+        console.log("obj4", obj4);  //Bird
+        console.log("obj5", obj5);  //Animal
+
+        console.log("obj1.isAnimal", obj1.isAnimal);  //true
+        console.log("obj1.numOfLegs", obj1.numOfLegs);  //undefined
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

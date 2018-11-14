@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <script>
+
+        let collage = {
+            name: 'JB',
+            address: 'Tel Aviv'
+        }
+        
+        /*Sealing----------------
+        prevents extensions and makes all properties unconfigurable.
+            - when we try to add a new property - it fails silently
+            - when we try to re-config property attribute - we get an error
+        */
+        console.log("before sealing collage.name configurable:"
+        ,Object.getOwnPropertyDescriptor(collage, 'name').configurable);  
+        Object.seal(collage)
+        console.log("after sealing collage.name configurable:"
+        , Object.getOwnPropertyDescriptor(collage, 'name').configurable);
+     
+
+        try {
+            collage.fullAddress = 'homa umigdal tel aviv';
+        }
+        catch (e) {
+            console.log(e);
+        }
+
+
+        try {
+            Object.defineProperty(collage, 'name', { enumerable: false });
+        }
+        catch (e) {
+            console.log(e);
+        }
+
+        //You can still change the value of the property, but not its attributes
+        console.log(`before change collage: ${JSON.stringify(collage)}`);
+        collage.name = 'JBH';
+        console.log(`after change collage: ${JSON.stringify(collage)}`);
+
+        //check whether an object is sealed 
+        console.log("Object.isSealed(collage)", Object.isSealed(collage));
+
+
+/*
+OUTPUT:
+__________________________________
+before sealing collage.name configurable: true
+after sealing collage.name configurable: false
+
+TypeError: Cannot redefine property: name
+
+before change collage: {"name":"JB","address":"Tel Aviv"}
+after change collage: {"name":"JBH","address":"Tel Aviv"}
+
+Object.isSealed(collage) true
+*/
+
+       
+    </script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="app.js"></script>
+    <style>
+        body {
+            padding-left: 40px;
+        }
+
+        label,
+        input {
+            display: inline-block;
+            width: 100px;
+            margin-bottom: 20px;
+        }
+
+        button {
+
+            display: block;
+            width: 220px;
+        }
+    </style>
+</head>
+
+<body onload="showCurrentList()">
+
+    <h1> local storage (HTML5)</h1>
+
+    <label>firstName:</label>
+    <input id="firstName">
+    <br/>
+    <label>lastName:</label>
+    <input id="lastName">
+    <br/>
+    <label>age:</label>
+    <input id="age" type="number">
+    <br/>
+    <label>color:</label>
+    <input id="color" type="color">
+    <br/>
+    <button onclick="addPerson()">save person</button>
+    <button onclick="clearAllData()">clear list</button>
+    <hr/>
+    <ol id="res"></ol>
+</body>
+
+</html>

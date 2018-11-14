@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script>
+        function* func1() {
+            yield "A";
+            yield "B";
+            yield "C";
+        }
+
+
+        function* func2() {
+            yield func1();
+            yield "E";
+            yield "F";
+        }
+
+        function* func3() {
+            yield* func1();
+            yield "E";
+            yield "F";
+        }
+
+        console.log("--------------for of - func1---------------");
+        for (let x of func1()) {
+            console.log(x);
+        }
+
+        console.log("--------------for of - func2---------------");
+        for (let x of func2()) {
+            console.log(x);
+        }
+
+        console.log("--------------for of - func3---------------");
+        for (let x of func3()) {
+            console.log(x);
+        }
+
+
+        /*
+        OUTPUT:
+        _______________________________________________
+            --------------for of - func1---------------
+            A
+            B
+            C
+            --------------for of - func2---------------
+            func1 {<suspended>}
+            E
+            F
+            --------------for of - func3---------------
+            A
+            B
+            C
+            E
+            F
+        */
+
+
+        let arr1=[1,1,1];
+        let arr2=[arr1,2,3];
+        let arr3=[...arr1,2,3];
+        console.log(arr1);  //--> [1, 1, 1]
+        console.log(arr2);  //--> [[1, 1, 1], 2, 3]
+        console.log(arr3);  //--> [1, 1, 1, 2, 3]
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

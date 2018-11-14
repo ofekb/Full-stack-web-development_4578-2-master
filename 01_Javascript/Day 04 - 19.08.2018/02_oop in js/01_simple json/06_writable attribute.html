@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+
+<html>
+
+<head>
+    <script>
+        let collage = {
+            key0:456
+        };
+
+        Object.defineProperty(collage, 'key1', {
+            value: 456,
+            writable: false
+        });
+
+        console.log(collage);  //--> {key0: 456, key1: 456}
+        collage.key1++;
+        console.log(collage);  //--> {key0: 456, key1: 456}
+        collage.key0++;
+        console.log(collage);  //--> {key0: 457, key1: 456}
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

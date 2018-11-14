@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script>
+        let arr = ["H", "E", "L", "L", "O"];
+
+       
+        let res = arr.reduce(
+            (previousValue, currentValue, currentIndex) =>
+                (currentIndex == 3) ?
+                    previousValue.toLowerCase() + currentValue :
+                    previousValue + currentValue.toLowerCase()
+        );
+
+
+        console.log(res);  //helLo
+
+
+         
+        /*
+        RUNNING SIMULATION:
+        ------------------------------------------------------------------------------------------
+        
+        previousValue       |       currentValue     |      currentIndex  |     return
+        __________________________________________________________________________________________
+         H                  |       E                |      1             |     He
+        __________________________________________________________________________________________
+         He                 |       L                |      2             |     Hel
+        __________________________________________________________________________________________
+         Hel                |       L                |      3             |     helL
+        __________________________________________________________________________________________
+         helL               |       O                |      4             |     helLo
+        __________________________________________________________________________________________
+        */
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script>
+
+function func1(){
+    document.getElementById("res").innerHTML+="<p>func1 START</p>";
+    for(var i=0; i< 10**10; i++);
+    document.getElementById("res").innerHTML+="<p>func1 END</p>";
+}
+    </script>
+</head>
+
+<body>
+    <input/>
+    <hr/>
+    <button onclick="func1()">click me</button>
+    <div id="res"></div>
+</body>
+
+</html>

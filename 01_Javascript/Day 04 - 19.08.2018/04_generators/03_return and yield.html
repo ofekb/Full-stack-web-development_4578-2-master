@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script>
+        function* func1() {
+            yield "A";
+            yield "B";
+            yield "C";
+
+            return "D";
+
+            yield "E";
+            yield "F";
+        }
+
+        for (let x of func1()) {
+            console.log(x);
+        }
+
+ 
+        /*
+        OUTPUT:
+            A
+            B
+            C       
+        */
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

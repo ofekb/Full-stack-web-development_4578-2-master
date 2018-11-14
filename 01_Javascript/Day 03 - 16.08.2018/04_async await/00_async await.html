@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script>
+        function getPromise(num) {
+            return new Promise(
+                (resolve, reject) => {
+                    (num == 4) ? resolve("OK") :
+                        reject("NOT OK");
+                });
+        }
+
+
+        //-------------FIRST WAY TO USE PROMISE------------------
+        getPromise(4)
+            .then(x => console.log(`call1 | I got ${x}`))
+            .catch(x => console.log(`call1 | Error : ${x}`));
+
+
+        getPromise(3)
+            .then(x => console.log(`call2 | I got ${x}`))
+            .catch(x => console.log(`call2 | Error : ${x}`));
+
+        //-------------SECOND  WAY TO USE PROMISE----------------
+
+
+        async function handlePromise(num) {
+            try {
+                let resolveVal = await getPromise(num);
+                console.log(`call3 | I got ${resolveVal}`)
+            }
+            catch (e) {
+                console.log(`call3 | Error : ${e}`)
+            }
+        }
+
+
+        handlePromise(4);
+        handlePromise(3);
+
+
+        /*
+        OUTPUT:
+        _____________________
+        call1 | I got OK
+        call2 | Error : NOT OK
+        call3 | I got OK
+        call3 | Error : NOT OK
+        */
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

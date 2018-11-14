@@ -1,0 +1,91 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <script>
+
+        /*Inheritance---------------------------------------
+        Prototype is based inheritance
+        An object specifies its prototype via the internal property  __proto__  
+        */
+
+        var Person = {
+            describe: function () {
+                console.log('Person named ' + this.name);
+            },
+            sayHello: function () {
+                console.log(`Person: "Hello!!"`);
+        }
+        };
+        var student1 = {
+            __proto__:Person,
+            name: 'Alice',
+           
+        };
+        Object.defineProperty( student1,"lastName", { value: 'W.', enumerable: false });
+
+        student1.describe();
+        student1.sayHello();
+
+        
+        /*
+        In a prototype chain, a property in an object overrides a property with the same key in a Prototype object
+        */
+        student1.sayHello= function () {
+            console.log(`student1: "Hello!!"`);
+        }
+        student1.sayHello();
+
+        /*
+        Object.getOwnPropertyDescriptors() -ECMAScript 2017 feature  
+        returns the property descriptors of all own properties in an Array
+        */
+        console.log("Object.getOwnPropertyDescriptors(student1)",Object.getOwnPropertyDescriptors(student1));
+        console.log(`Object.getOwnPropertyDescriptor(student1,"sayHello")`,Object.getOwnPropertyDescriptor(student1,"sayHello"));
+        console.log(`Object.getOwnPropertyDescriptor(student1,"describe")`,Object.getOwnPropertyDescriptor(student1,"describe"));
+
+
+        /*---------------The instanceof Operator----------------
+        determines whether value has been created by the constructor Constr or a subconstructor. 
+        It does so by checking whether Constr.prototype is in the prototype chain of value.
+        */
+        console.log("{} instanceof Object",{} instanceof Object);  //--> true (Object is constructor of {})
+        console.log("[] instanceof Array",[] instanceof Array );  // --> true (Array is constructor of [])
+        console.log("[] instanceof Object", [] instanceof Object); // --> true (Object is super-constructor of [])
+        console.log("123 instanceof Number", 123 instanceof Number);  //--> false (instanceof is always false for primitive values)
+       
+     
+        //check whether a property exists as OwnProperty and not as inherited  
+        console.log("student1.hasOwnProperty('name')",student1.hasOwnProperty('name'));
+        console.log("student1.hasOwnProperty('sayHello')", student1.hasOwnProperty('sayHello'));
+        console.log("student1.hasOwnProperty('describe')", student1.hasOwnProperty('describe'));
+
+
+        //check whether a property exists as OwnProperty or inherited
+        console.log("'name' in student1", 'name' in student1);
+
+
+        //'lastName' in student1 returns true, although is 'lastName' non-enumerable
+        console.log("'lastName' in student1", 'lastName' in student1);
+
+        console.log("'sayHello' in student1", 'sayHello' in student1);
+      
+        
+        //Object.getOwnPropertyNames() - returns the keys of all own properties
+        console.log("Object.getOwnPropertyNames(student1)",Object.getOwnPropertyNames(student1));
+
+
+        //Object.keys() -  returns the keys of all enumerable own properties 
+        console.log("Object.keys(student1)",Object.keys(student1));
+
+
+        //list all enumerable properties (own and inherited)
+        for (i in student1)
+            console.log("i in student1",i);
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

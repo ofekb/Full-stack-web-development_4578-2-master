@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script>
+        let student1 = {
+            name: "Bob",
+            grade: 100
+        };
+
+        console.log(student1);  //--> {name: "Bob", grade: 100}
+
+        student1.grade = 80;
+
+        console.log(student1);  //--> {name: "Bob", grade: 80}
+
+
+        let sym = Symbol("grade");
+
+        let student2 = {
+            name: "Bob",
+            [sym]:99,
+            [Symbol("grade")]: 100
+        };
+
+        console.log(student2);  //--> {name: "Bob", Symbol(grade): 99, Symbol(grade): 100}
+
+        student2[Symbol("grade")] = 80;
+
+        console.log(student2);  //--> {name: "Bob", Symbol(grade): 99,  Symbol(grade): 100, Symbol(grade): 80}
+
+        student2[sym]=77;
+        console.log(student2);  //--> {name: "Bob", Symbol(grade): 77, Symbol(grade): 100, Symbol(grade): 80}
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <script>
+
+        //new Object() is like {}
+        //by default every json object contains an object's __proto__ (prototype)
+
+        let school1 = new Object();
+        school1.name = "Ort";
+        school1["full name"]="Ort Rehovot"
+        console.log("school1", school1);
+
+        let school2 = {};
+        school2.numOfStudents= 200;
+        school2.address = "Tel Aviv";
+        console.log("school2", school2);
+
+
+/*
+        
+output:
+___________________________
+
+school1 
+full name:"Ort Rehovot"
+name:"Ort
+__proto__:Object
+
+school2 
+address:"Tel Aviv"
+numOfStudents:200
+__proto__:Object
+
+*/
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

@@ -1,0 +1,81 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <script>
+        //A constructor is a function that is invoked via the new operator
+        function Person(name) {
+
+            //public member
+            this.name = name;
+
+
+            //encapsulation - 3 ways:
+
+            //way 1-------------
+            var address;
+
+            this.setAddress = () => { return address };
+            this.setAddress = (param) => { address=param };
+
+            //way 2-------------
+            this._children = [];
+
+            //way 3-------------
+            var privateAge = {
+                method: function () {  // open IIFE
+
+                    // method-private data
+                    var ageCount = 0;
+                    return function () {
+                        ageCount++;
+                        console.log('ageCount is now:' + ageCount);
+                        return ageCount;
+                    };
+                }()  // close IIFE
+            };
+
+            this.age = privateAge.method;
+
+        }
+
+        //The object in Person.prototype becomes 
+        //the prototype of all instances of Person
+        Person.prototype.addChild = function (str) {
+            this._children.push(str);
+        };
+        Person.prototype.getChildren = function () {
+            return this._children;
+        }
+
+        Person.prototype.describe = function () {
+            console.log(`Person name: ${this.name}`);
+        };
+
+
+        var student1 = new Person('Bob');
+
+        student1.describe();
+        student1.age();
+        student1.age();
+        student1.age();
+
+        //The instanceof operator allowsto check whether an object is an instance of a given constructor
+        console.log("student1 instanceof Person", student1 instanceof Person);
+
+        //Determining the name of an object’s constructor
+        console.log("student1.constructor", student1.constructor);
+
+
+        let student2 = new student1.constructor("Alice");
+        student2.describe();
+        student2.age();
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

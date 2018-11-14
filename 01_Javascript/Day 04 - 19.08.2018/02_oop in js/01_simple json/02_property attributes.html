@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <script>
+
+
+        /*
+        PROPERTY ATTRIBUTES IN A JSON OBJECT CAN CONTAIN:
+        _______________________________________________
+        value
+        writable 
+        configurable
+        enumerable        
+        */
+
+
+
+        //every property in this init will have true for : writable  - configurable - enumerable 
+        let collage = {
+            name: 'JB',
+            address: 'Tel Aviv',
+            describe: function () {
+                return `collage describe name: ${this.name}`;
+            },
+        };
+
+
+        /*
+        defineProperty - is a static function from Object class.
+        this function takes 3 parameters:
+                1) the object that we want to add to it a new property
+                2) a string / symbol - that represents the key of the property that we want to add
+                3) a json object - that contains all the config of the prop meta data
+        */
+        Object.defineProperty(collage, 'key1', {
+            value: 456,
+            writable: false,
+            configurable: false,
+            enumerable: true
+        });
+
+
+        console.log(JSON.stringify(collage));
+
+
+        /*
+        OUTPUT:
+        ____________________________
+
+        {
+        "name": "JB",
+        "address": "Tel Aviv",
+        "key1": 456
+        }
+
+        */
+
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script>
+        let num1 = 7;
+        console.log(num1, typeof (num1));  //--> 7 "number"
+
+        let num2 = new Number(num1);
+        console.log(num2, typeof (num2));  //--> {[[PrimitiveValue]]:7} "object"
+
+
+        let num3 = num2;
+        console.log(num2 === num3);  //--> true
+
+
+        num2++;  /*EVERY CHANGE OF NUM OBJECT - CREATES A NEW NUMERIC VALUE*/
+        
+        console.log(num2, typeof (num2));  //--> 8 "number"
+        console.log(num3, typeof (num3));  //--> {[[PrimitiveValue]]:7} "object"
+        console.log(num2 === num3);  //--> false
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

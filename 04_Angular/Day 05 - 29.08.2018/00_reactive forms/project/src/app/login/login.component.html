@@ -1,0 +1,15 @@
+<form [formGroup]="formGroup" (ngSubmit)="submitLogin()">
+
+    <div *ngFor="let x of obj.keys(formGroup.controls)">
+        <label>{{x}}:</label>
+        <input formControlName="{{x}}" />
+
+        <div *ngIf="formGroup.controls[x].errors">
+            <p *ngFor="let err of obj.values(formGroup.controls[x].errors)">{{err}}</p>
+        </div>
+
+    </div>
+
+    <input type="submit" value="Login" [disabled]="formGroup.invalid" />
+
+</form>

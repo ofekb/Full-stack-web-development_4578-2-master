@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script>
+        let myTZ;
+
+        onload = () => {
+            myTZ = document.getElementById('tz');
+        }
+
+        let setSubmit = () => {
+            myTZ.setCustomValidity((legalTz(myTZ.value)) ? '' : 'TZ is not ok');
+
+        }
+
+        let legalTz = (tz) => {
+
+            let total = 0;
+            for (i = 0; i < 9; i++) {
+                let x = (((i % 2) + 1) * tz.charAt(i));
+                total +=Math.floor(x/10) + x%10;
+            }
+
+            return (total % 10 == 0);
+        }
+
+
+
+    </script>
+</head>
+
+<body>
+
+    <form onsubmit="return false">
+        <input id="tz" required autofocus/>
+        <button onclick="setSubmit()">submit</button>
+    </form>
+
+</body>
+
+</html>

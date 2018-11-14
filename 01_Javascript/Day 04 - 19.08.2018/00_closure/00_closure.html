@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script>
+        window.onload = () => {
+            for (let i = 1; i <= 3; i++) {
+                let btn = document.getElementById("b" + i);
+                btn.addEventListener("click",
+                    (() => {
+                        let cnt = 0;
+                        return () => { alert("click number " + (cnt++))}
+                    })()
+                );
+            }
+        }
+
+    </script>
+
+</head>
+
+<body>
+
+    <button id="b1"> b1 </button>
+
+    <button id="b2"> b2 </button>
+
+    <button id="b3"> b3 </button>
+
+</body>
+
+</html>

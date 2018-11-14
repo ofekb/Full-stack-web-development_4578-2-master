@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <script>
+        //---------------------non strict mode--------------------
+
+
+        function Person(name) {
+            this.name = name;
+        }
+
+        //If you forget new when you use a constructor, you are calling it as a function instead of as a constructor
+        let p1 = Person('J-Bryce');  // No instance is created
+        console.log("p1", p1); // undefined
+        console.log("name", name); // A global variable "this.name" is created
+        console.log("window.name", window.name); // A global variable "this.name" is created
+
+
+
+        //---------------------strict mode--------------------
+
+        //Protection against forgetting new: strict mode
+        function StrictPerson(name) {
+            'use strict';
+            this.name = name;
+        }
+
+
+        var p2 = new StrictPerson('Zohar N.');
+        console.log("p2", p2);
+
+        // Uncaught TypeError: Cannot set property 'name' of undefined
+        var p3 = StrictPerson('Anna K.');
+        console.log("p3", p3);
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

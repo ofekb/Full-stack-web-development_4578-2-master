@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <script>
+        let collage = {
+            name: 'JB',
+            address: 'Tel Aviv',
+            describe: function () {
+                return `collage describe name: ${this.name}`;
+            },
+        };
+
+        Object.defineProperty(collage, 'key1', {
+            value: 456,
+            configurable: true,
+            enumerable: false
+        });
+
+
+        console.log("******************entries*********************");
+        //Object.entries returns an array of the 
+        //entries of all the enumerable properties
+        console.log("Object.entries(collage)", Object.entries(collage));
+
+
+
+
+        console.log("******************for-in*********************");
+        for (let key in collage) {
+            console.log(`${key}: ${collage[key]}`);
+        }
+
+
+        /*
+        OUTPUT:
+        ______________________________________________________________
+        
+        ******************entries*********************
+        Object.entries(collage) name,JB,address,Tel Aviv,describe,function () {
+                return `collage describe name: ${this.name}`;
+            }
+        ******************for-in*********************
+        name: JB
+        address: Tel Aviv
+        describe: function () {
+                return `collage describe name: ${this.name}`;
+            }
+        
+        
+        */
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

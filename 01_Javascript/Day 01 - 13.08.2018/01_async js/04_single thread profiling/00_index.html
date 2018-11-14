@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script>
+
+        function f1() {
+            document.getElementById("res").innerHTML += "<p>f1 START</p>";
+            for (let i = 0; i < 10 ** 10; i++);
+            document.getElementById("res").innerHTML += "<p>f1 END</p>"
+        }
+
+
+        function f2() {
+            document.getElementById("res").innerHTML += "<p>f2 START</p>";
+            setTimeout(() => { document.getElementById("res").innerHTML += "<p>f2 END</p>" }, 12000);
+        }
+
+
+        function f3() {
+            document.getElementById("res").innerHTML += "<p>f3 START</p>";
+
+            setTimeout(() => {
+                for (let i = 0; i < 10 ** 10; i++);
+                document.getElementById("res").innerHTML += "<p>f3 END</p>"
+            }, 12000);
+        }
+
+        function f4() {
+            document.getElementById("res").innerHTML += "<p>f4 START</p>"
+
+            var blob = new Blob([
+                `onmessage = function (e) { 
+                            for (var num = 0; num < e.data; num++);
+                            postMessage("");
+                        };`
+            ], { type: "text/javascript" });
+
+            var worker = new Worker(window.URL.createObjectURL(blob));
+
+            worker.postMessage(10 ** 8);
+
+            worker.onmessage = () => { document.getElementById("res").innerHTML += "<p>f4 END</p>" };
+
+        }
+
+    </script>
+</head>
+
+<body>
+    <label>test me:</label>
+    <input/>
+    <hr/>
+
+    <button onclick="f1()">click to exec f1</button>
+    <button onclick="f2()">click to exec f2</button>
+    <button onclick="f3()">click to exec f3</button>
+    <button onclick="f4()">click to exec f4</button>
+    <hr/>
+    <div id="res"></div>
+</body>
+
+</html>

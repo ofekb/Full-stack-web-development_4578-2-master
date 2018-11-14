@@ -1,0 +1,76 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <script>
+
+        /*Inheritance---------------------------------------
+        Prototype is based inheritance
+        An object specifies its prototype via the internal property  __proto__  
+        */
+
+        var Person = {
+            isMale: true,
+            changeGender: function () {
+                this.isMale = !this.isMale;
+            },
+            getGender: function () {
+                return this.isMale;
+            },
+            describe: function () {
+                console.log('Person named ' + this.name);
+            },
+            sayHello: function () {
+                console.log(`Person: "Hello!!"`);
+            }
+        };
+        var student1 = {
+            __proto__: Person,
+            name: 'Alice',
+
+        };
+
+        student1.describe();
+
+        /*Object.create-----------------------------------------
+        Creating a new object with a given prototype
+        Object.create - creates an object whose prototype is the first parameter. 
+        (Optionally, properties can be added via descriptors as a second parameter)
+        */
+        var student2 = Object.create(Person, {
+            name: { value: 'Lara', writable: true },
+            lastName: { value: 'W.', writable: false }
+        });
+        student2.age = 18;
+
+        var student3 = Object.create(Person)
+        student3.name = 'Jonathan';
+
+        //Reading the prototype of an object
+        console.log("student2", student2);
+        console.log("student3", student3);
+
+        //Reading the prototype of an object
+        console.log("Object.getPrototypeOf(student3)", Object.getPrototypeOf(student3));
+        console.log("student3.__proto__", student3.__proto__);
+        console.log("student3.__proto__===Person", student3.__proto__ === Person);
+
+        console.log("Person before student3.changeGender():", Person);
+        console.log("student3 before student3.changeGender():", student3);
+        student3.changeGender();
+        console.log("Person.getGender():", Person.getGender());  //true
+        console.log("student3.getGender():", student3.getGender());  //false
+
+
+        console.log("Person after student3.changeGender():", Person);
+        console.log("student3 after student3.changeGender():", student3);
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

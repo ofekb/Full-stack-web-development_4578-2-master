@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script>
+        function describe() {
+            return this.name
+        }
+
+        let obj1 = {
+            name: "bob",
+            describe: function () {
+                return this.name
+            }
+        };
+
+        let obj2 = {
+            name: "bob",
+            describe: () => this.name  //arrow function dont recognize `this` in an object
+        };
+
+
+        let obj3 = {
+            name: "bob",
+            describe() {
+                return this.name
+            }
+        };
+
+
+        let obj4 = {
+            name: "bob",
+            describe
+        };
+
+        console.log(obj1.describe());  //--> bob
+        console.log(obj2.describe());  //--> undefined
+        console.log(obj3.describe());  //--> bob
+        console.log(obj4.describe());  //--> bob
+
+        
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

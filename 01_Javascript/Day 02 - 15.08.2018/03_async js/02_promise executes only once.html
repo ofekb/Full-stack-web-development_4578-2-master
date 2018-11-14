@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script>
+        let p = new Promise((resolve, reject) => {
+            for (i = 0; i < 10; i++) {
+                resolve(console.log(`reslove ${i}`) || `reslove time ${i}`)
+            }
+        });
+
+
+        p.then((msg) => { console.log(msg) });
+
+
+        /*
+        OUTPUT:
+        ____________________
+            reslove 0
+            reslove 1
+            reslove 2
+            reslove 3
+            reslove 4
+            reslove 5
+            reslove 6
+            reslove 7
+            reslove 8
+            reslove 9
+            reslove time 0
+        */
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

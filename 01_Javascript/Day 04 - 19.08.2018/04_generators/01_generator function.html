@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script>
+        function* func() {
+            yield "A";
+            yield "B";
+            yield "C";
+        }
+
+        let funcRes = func();  //funcRes is IterableIterator<"A" | "B" | "C">
+
+        for (let x of funcRes) {
+            console.log(x);
+        }
+
+
+        /*
+        OUTPUT:
+        _______________________________________________
+            A
+            B
+            C
+        */
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

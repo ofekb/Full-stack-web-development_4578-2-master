@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script>
+
+        function getKey(n1, n2) {
+            return `key${n1 + n2}`;
+        }
+
+        let key = "test";
+
+        let a1 = {
+            name: 'JB',
+            key: "test ok"
+        };
+        console.log(a1);  //--> {name: "JB", key: "test ok"}
+
+
+        let a2 = {
+            name: 'JB',
+            [key]: "test ok"
+        };
+        console.log(a2);  //--> {name: "JB", test: "test ok"}
+
+
+
+        let a3 = {
+            name: 'JB',
+            [getKey(1, 3)]: "test ok"
+        };
+        console.log(a3);  //-->{name: "JB", key4: "test ok"}
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

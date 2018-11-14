@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script>
+        var test;
+
+        //---------------VAL TYPE----------------
+        test =2;
+        console.log(typeof (test));  //--> number
+
+        test =true;
+        console.log(typeof (test));  //--> boolean
+
+        test =undefined;
+        console.log(typeof (test));  //--> undefined
+
+        test =null;
+        console.log(typeof (test));  //--> object
+
+        test =Symbol();
+        console.log(typeof (test));  //--> symbol
+
+        //---------------REF TYPE----------------
+        test ="Bob";
+        console.log(typeof (test));  //--> string
+
+        test =()=>{};
+        console.log(typeof (test));  //--> function
+
+        test ={};
+        console.log(typeof (test));  //--> object
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

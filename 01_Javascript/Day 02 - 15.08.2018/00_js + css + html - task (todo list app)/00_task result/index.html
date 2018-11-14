@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Todo App</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+    <script src="app.js"></script>
+</head>
+
+<body id="myPage" data-target=".navbar" data-offset="60">
+
+    <!-- Jumbotron (PAGE HEADER) -->
+    <div class="jumbotron text-center">
+        <h1>Todo list application</h1>
+        <p>The best way to control your tasks</p>
+    </div>
+
+    <!-- Container (ADD NEW TODO ITEM) -->
+    <div id="contact" class="container-fluid bg-grey">
+        <h2 class="text-center">New task</h2>
+        <div class="col-sm-6 col-sm-offset-3 col-xs-12">
+            <form onsubmit="return false">
+                <div class="input-group">
+                    <span class="input-group-addon">Date:</span>
+                    <input id="date" type="date" class="form-control">
+                </div>
+                <div class="input-group">
+                    <span class="input-group-addon">Time:</span>
+                    <input id="time" type="time" class="form-control">
+                </div>
+                <textarea class="form-control" id="content" placeholder="Task content" rows="5"></textarea>
+                <br>
+                <div class="form-group">
+                    <button class="btn btn-default pull-right" onclick="setSubmit()">Ass task</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+    <!-- Container (TODO LIST) -->
+    <div id="pricing" class="container-fluid">
+        <div class="text-center">
+            <h2>Task list</h2>
+            <h4>View all your tasks:</h4>
+        </div>
+        <div class="row" id="res"></div>
+    </div>
+
+    <!-- Container (PAGE FOOTER) -->
+    <footer class="container-fluid text-center">
+        <a href="#myPage" title="To Top">
+            <span class="glyphicon glyphicon-chevron-up"></span>
+        </a>
+        <p>Made By Saldat - JB</p>
+    </footer>
+
+
+</body>
+
+</html>

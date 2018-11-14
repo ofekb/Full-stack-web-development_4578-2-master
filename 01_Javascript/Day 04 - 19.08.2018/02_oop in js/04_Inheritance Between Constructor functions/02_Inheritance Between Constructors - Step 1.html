@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+   <script>
+
+
+       function Person(name) {
+           this.name = name;
+       }
+       Person.prototype.describe = function () {
+           return 'Person called ' + this.name;
+       };
+
+
+       //Sub should have all of the properties of Super (both prototype properties and instance properties) in addition to its own. 
+
+
+       /*---------------Inheriting Instance Properties-----------------
+       Instance properties are set up in the constructor itself, 
+       so inheriting the superconstructor’s instance properties involves calling that constructor
+       */
+       function Employee(name, title) {
+           //Do not to invoke Super via new, because that would create a new super instance.
+           Person.call(this, name);
+           this.title = title;
+       }
+
+      
+
+       /*---------------Inheriting Prototype Properties-----------------
+       All properties that are kept in the instance prototype. 
+       Will be inherited when we give Sub.prototype the prototype Super.prototype
+       */
+
+       //Before ECMAScript 5 and Object.create(), an often-used solution was to create the subprototype by invoking the superconstructor:
+       //The prototype will have all of Super’s instance properties, which it has no use for. 
+       //Therefore, it is better to use the aforementioned pattern (involving Object.create()).
+       //Employee.prototype = new Person();  // Don’t do this
+
+       //Object.create() produces a new object whose prototype is Super
+       Employee.prototype = Object.create(Person.prototype);
+
+       //we also need to set up the property constructor, because we have replaced the original instance prototype where it had the correct value.
+       Employee.prototype.constructor = Employee;
+
+
+
+       /*-----------------------------Overriding a Method---------------------------------
+       We override a method in Super.prototype by adding a method with the same name to Sub.prototype
+       */
+       Employee.prototype.describe = function () {
+           return Person.prototype.describe.call(this) 
+                     + ' (' + this.title + ')';
+       };
+
+
+       /*
+       every instance of Sub must also be an instance of Super
+       */
+       let emp = new Employee("Jhon bryce", "Collage services");
+       console.log("emp", emp);
+       console.log("emp.describe()", emp.describe());
+       console.log("emp instanceof Person",emp instanceof Person);
+       console.log("emp instanceof Employee",emp instanceof Employee);
+ 
+     
+   </script>
+</head>
+<body>
+
+</body>
+</html>

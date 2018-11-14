@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <script>
+        let collage = {
+            name: 'JB',
+            address: 'Tel Aviv',
+            describe: function () {
+                return `collage describe name: ${this.name}`;
+            },
+        };
+
+
+        //every property in this init will have false for : writable  - configurable - enumerable 
+        Object.defineProperty(collage, 'key1', {value: 456});
+
+
+        console.log("address", Object.getOwnPropertyDescriptor(collage, "address"));
+        console.log("key1", Object.getOwnPropertyDescriptor(collage, "key1"));
+
+        //Object.values returns an array of all the enumerable properties
+        console.log("Object.values(collage)", Object.values(collage));
+
+
+        //Object.keys returns an array of all the enumerable properties
+        console.log("Object.keys(collage)", Object.keys(collage));
+
+        //JSON.stringify returns a string with all the enumerable properties
+        console.log("JSON.stringify(collage)", JSON.stringify(collage))
+/*
+
+
+OUTPUT:
+_____________________________________
+address 
+configurable: true
+enumerable: true
+value: "Tel Aviv"
+writable: true
+__proto__: Object
+
+
+key1 
+configurable: false
+enumerable: false
+value: 456
+writable: false
+__proto__: Object
+
+
+Object.values(collage) ["JB", "Tel Aviv", ƒ ()]
+Object.keys(collage) ["name","address","describe"]
+JSON.stringify(collage) {"name":"JB","address":"Tel Aviv"}
+*/
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

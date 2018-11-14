@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script>
+        class Person {
+            //every time we create a new Person with the "new Person()" command
+            //the ctor is called
+            constructor(age, address, country = "Israel") {
+
+                this.setAge(age);
+                this.address = address;
+
+                this._country = country; //read - only (does not have a setter)
+            }
+
+            describe() {
+                console.log(`Person lives in ${this._address}`);
+            }
+
+            toString() {
+                let str = "";
+                for (let i in this) {
+                    str += `${i}: ${this[i]}\n `;
+                }
+                return str;
+            }
+
+            //first way to create a property
+            //getter & setter functions
+            setAge(val) {
+                if (val > 0 && val <= 120)
+                    this._age = val;
+            }
+
+            getAge() {
+                return this._age;
+            }
+
+            //second way to create a property
+            set address(val) {
+                if (val && val.length < 15)
+                    this._address = val;
+            }
+
+            get address() {
+                return this._address;
+            }
+
+            //read-only property - create a get without set
+            //this property can get a value only once - in the ctor
+            get country() {
+                return this._country;
+            }
+        }
+
+        let p1 = new Person();
+        console.log("Person p1", JSON.stringify(p1));
+        console.log("p1.getAge()", p1.getAge());  //-->undefined
+        p1.setAge(10);
+        console.log("p1.getAge()", p1.getAge());  //-->10
+
+        p1.address = "Tel Aviv";
+        console.log("p1.address", p1.address);
+        p1.describe();
+        console.log("p1.country", p1.country);
+        console.log("Person p1", JSON.stringify(p1));
+
+        let p2 = new Person(22, "London", "UK");
+        console.log("Person p2", p2);
+        console.log("Person p2", p2.toString());
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script>
+        //--------------------------ARRAY (non-immutable)--------------------
+        let arr1 = ["a","a"];
+        let arr2 = arr1;
+
+        console.log(`arr1: ${arr1}, arr2: ${arr2}`);  //--> arr1: a,a, arr2: a,a
+
+
+        arr2[0] = "b";
+        console.log(`arr1: ${arr1}, arr2: ${arr2}`);  //--> arr1: b,a, arr2: b,a
+
+        arr2 = ["c","c"];
+        console.log(`arr1: ${arr1}, arr2: ${arr2}`);  //--> arr1: b,a, arr2: c,c
+
+
+        //--------------------------STRING (immutable)--------------------
+        let str1 = "Hello";
+        let str2 = str1;
+
+        console.log(`str1: ${str1}, str2: ${str2}`);  //--> str1: Hello, str2: Hello
+
+
+        str2[0] = "h";
+        console.log(`str1: ${str1}, str2: ${str2}`);  //--> str1: Hello, str2: Hello
+
+        str2 = "hello";
+        console.log(`str1: ${str1}, str2: ${str2}`);  //--> str1: Hello, str2: hello
+
+
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

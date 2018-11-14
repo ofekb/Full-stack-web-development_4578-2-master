@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script>
+
+        /*
+        timeToRepeat: 3
+        sec to timer1 : 2
+        sec to timer2 : 4
+        sec to timer3 : 1
+        */
+
+        setTimeout(
+            () => {
+                console.log(`Timer number 1, waited 2 sec (${(new Date()).toLocaleTimeString()})`);
+                setTimeout(
+                    () => {
+                        console.log(`Timer number 2, waited 4 sec (${(new Date()).toLocaleTimeString()})`);
+                        setTimeout(
+                            () => {
+                                console.log(`Timer number 3, waited 1 sec (${(new Date()).toLocaleTimeString()})`);
+
+                            }, 1 * 1000)
+                    }, 4 * 1000)
+            }, 2 * 1000)
+
+      
+/*
+OUTPUT:
+___________________________________
+Timer number 1, waited 2 sec (9:15:58)
+Timer number 2, waited 4 sec (9:16:02)
+Timer number 3, waited 1 sec (9:16:03)
+*/
+
+    </script>
+</head>
+
+<body>
+</body>
+
+</html>

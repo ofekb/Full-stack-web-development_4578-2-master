@@ -1,0 +1,11 @@
+<h1>Color Selection</h1>
+<select (change)="setColor($event.target.value)">
+  <option *ngFor="let y of colorList, let i=index" [value]="i">{{y}}</option>
+</select>
+
+<h3>Selected color: {{enumHolder[selectedColor]}}</h3>
+
+<hr/>
+<p>static name: {{fullname}}</p>
+
+

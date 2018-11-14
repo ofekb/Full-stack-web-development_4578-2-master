@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script>
+
+
+        let timeToRepeat;
+        
+        function submitInput() {
+            let input = document.getElementById("num");
+            if (input.value) {
+                timeToRepeat = [];
+                for (let i = 0; i < input.value; timeToRepeat[i] = i++);
+                input.value = "";
+                timeToRepeat.reduce(callPromise, new Promise((x, y) => { x() }))
+            }
+        }
+
+        function callPromise(prevPromise, currentVal, timerIndex) {
+            return prevPromise.then(() => new Promise((resolve, reject) => {
+                let sec = prompt(`Enter sec to wait (timer ${timerIndex}:`);
+                setTimeout(
+                    () => {
+                        document.getElementById("res").innerHTML +=
+                            `<p>Timer number ${timerIndex}, waited ${sec} sec (${(new Date()).toLocaleTimeString()})</p>`;
+                        resolve();
+                    }, sec * 1000)
+            }));
+        }
+
+
+
+    </script>
+</head>
+
+<body>
+    <p id="label">Enter times to repeat timer:</p>
+    <input type="number" id="num" />
+    <button id="btn" onclick="submitInput()">submit</button>
+
+    <div id="res"></div>
+</body>
+
+</html>

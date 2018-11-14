@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script>
+        /*
+        Every function with async decleration:
+             1) can use `await` keyword
+             2) the returned value is sent as resolve of a promise
+        */
+        async function sub(n1, n2) {
+            if (n1 == n2)
+                throw new Error("can not be the same");  //this is reject promise
+            return n1 - n2;  //this is resolve promise
+        }
+
+        let print = msg => console.log(msg);
+
+        sub(4, 1).then(print).catch(print);
+        sub(4, 4).then(print).catch(print);
+
+        async function Callsub(x1, x2) {
+            try{
+                print(await sub(x1, x2));
+            }
+            catch(e){
+                print(e);
+            }
+            
+        }
+
+        Callsub(4, 1);
+        Callsub(4, 4);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

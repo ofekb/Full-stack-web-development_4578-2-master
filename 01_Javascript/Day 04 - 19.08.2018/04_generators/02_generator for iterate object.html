@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script>
+        let obj = {
+            key1: "A",
+            key2: "B",
+            key3: "C",
+        };
+
+
+        function* func() {
+            for (let x in obj) {
+                yield obj[x];
+            }
+        }
+
+
+        for (let x of func()) {
+            console.log(x);
+        }
+
+
+        /*
+        OUTPUT:
+        _______________________________________________
+            A
+            B
+            C
+        */
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

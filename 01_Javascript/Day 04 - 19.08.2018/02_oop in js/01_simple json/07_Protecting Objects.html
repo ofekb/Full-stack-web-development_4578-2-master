@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <script>
+
+        let collage = {
+            name: 'JB',
+            address: 'Tel Aviv'
+        }
+
+        /*Preventing Extensions----------------
+        makes it impossible to add properties to obj
+        adding a property fails silently in non-strict mode,
+        and throws an error in strict mode
+        */
+
+        Object.preventExtensions(collage);
+        
+        console.log(`before adding fullAddress to collage:
+         ${JSON.stringify(collage)}`);
+
+        collage.fullAddress = 'homa umigdal tel aviv';
+        console.log(`after adding fullAddress to collage:
+         ${JSON.stringify(collage)}`);
+
+        try{
+            (function () {
+                'use strict';
+                collage.fullAddress = 'homa umigdal tel aviv';
+            }());
+        }
+        catch (e) {
+            console.log(e);
+        }
+
+
+        
+        //check whether an object is extensible
+        console.log("Object.isExtensible(collage)",Object.isExtensible(collage));
+
+
+
+        /*
+
+        OUTPUT:
+        __________________________________
+        before adding fullAddress to collage:
+         {"name":"JB","address":"Tel Aviv"}
+        after adding fullAddress to collage:
+         {"name":"JB","address":"Tel Aviv"}
+         
+        TypeError: Cannot add property fullAddress, object is not extensible
+
+        Object.isExtensible(collage) false
+       
+       */
+    </script>
+</head>
+<body>
+
+</body>
+</html>

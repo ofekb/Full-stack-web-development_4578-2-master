@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script>
+        function setBackground() {
+            var color = document.getElementById("clr").value;
+            document.body.style.backgroundColor = color;
+            setTimeout(() => alert(color), 0); //alert is blocking io operation
+        }
+    </script>
+</head>
+
+<body>
+    <input type="color" id="clr" />
+    <button onclick="setBackground()">change background color</button>
+</body>
+
+</html>
